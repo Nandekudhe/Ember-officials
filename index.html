@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ember — Official Legal & Information Hub</title>
+  <meta name="description" content="All-in-one information hub for Ember: Privacy Policy, Refund Guidelines, Terms of Service, Studio Profile, and Support.">
+  <meta name="theme-color" content="#050505">
+
+  <!-- Typography matching Ember design system -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap">
+
+  <script>
+    // Theme initialization to avoid flash
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem('ember-theme'); } catch (e) {}
+      d.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+
+  <style>
+    /* ==========================================================================
+       Ember Design System & Unified All-in-One Legal Hub Styling
+       ========================================================================== */
+    :root {
+      --accent: #FF6A13;
+      --accent-rgb: 255, 106, 19;
+      --on-accent: #0A0A0A;
+      --accent-soft: rgba(var(--accent-rgb), .12);
+
+      --font-display: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+      --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+      --font-mono: "Space Mono", ui-monospace, Menlo, monospace;
+
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --ease-io: cubic-bezier(.76, 0, .24, 1);
+
+      --gutter: clamp(16px, 4vw, 48px);
+      --header-h: 72px;
+      --radius: 20px;
+    }
+
+    /* Dark Mode (Default) */
+    :root,
+    :root[data-theme="dark"] {
+      --bg: #050505;
+      --bg-elev: #0E0E0E;
+      --surface: #111111;
+      --surface-2: #181818;
+      --ink: #FFFFFF;
+      --ink-2: #A8A8A8;
+      --ink-3: #757575;
+      --line: rgba(255, 255, 255, .1);
+      --line-strong: rgba(255, 255, 255, .2);
+      --accent-text: #FF7A2B;
+      --shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 24px 48px -24px rgba(0, 0, 0, .8);
+      color-scheme: dark;
+    }
+
+    /* Light Mode */
+    :root[data-theme="light"] {
+      --bg: #FFFFFF;
+      --bg-elev: #FFFFFF;
+      --surface: #F6F6F6;
+      --surface-2: #EDEDED;
+      --ink: #0A0A0A;
+      --ink-2: #4A4A4A;
+      --ink-3: #6B6B6B;
+      --line: rgba(0, 0, 0, .09);
+      --line-strong: rgba(0, 0, 0, .2);
+      --accent-text: #BF4000;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 18px 36px -22px rgba(0, 0, 0, .2);
+      color-scheme: light;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 1rem/1.65 var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button, input, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; border: none; background: none; }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    ::selection { background: var(--accent); color: var(--on-accent); }
+
+    .container {
+      width: min(100% - 2 * var(--gutter), 1280px);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 100;
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+    }
+
+    .site-header::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(var(--accent-rgb), 0.25) 20%, var(--accent) 50%, rgba(var(--accent-rgb), 0.25) 80%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      font: 700 1.35rem/1 var(--font-display);
+      letter-spacing: -.03em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      overflow: visible;
+    }
+
+    .lm-core { fill: var(--accent); }
+    .lm-dot { fill: var(--ink); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      transition: border-color .3s, background-color .3s;
+    }
+    .icon-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    #theme-toggle svg { position: absolute; transition: transform .5s var(--ease), opacity .3s; }
+    :root[data-theme="dark"] .i-moon { opacity: 0; transform: rotate(-90deg) scale(.4); }
+    :root[data-theme="light"] .i-sun { opacity: 0; transform: rotate(90deg) scale(.4); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font: 600 .88rem/1 var(--font-ui);
+      transition: background-color .3s var(--ease), color .3s, transform .2s;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary { background: var(--accent); color: var(--on-accent); }
+    .btn-primary:hover { opacity: .92; }
+    .btn-outline { border: 1px solid var(--line-strong); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+    /* Hero Banner for Hub */
+    .hub-hero {
+      padding-top: calc(var(--header-h) + clamp(32px, 6vw, 64px));
+      padding-bottom: clamp(32px, 4vw, 48px);
+      position: relative;
+    }
+
+    .hub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--accent-text);
+      font: 600 0.75rem/1 var(--font-mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hub-title {
+      font: 700 clamp(2.4rem, 6vw, 4.2rem)/1.08 var(--font-display);
+      letter-spacing: -.04em;
+      margin-bottom: 14px;
+    }
+
+    .hub-subtitle {
+      max-width: 60ch;
+      color: var(--ink-2);
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      line-height: 1.6;
+    }
+
+    /* Live Search & Filter Bar */
+    .search-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 20px;
+  position: static;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  flex: none;
+}
+
+.search-box input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 44px;
+  font-size: 0.92rem;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.search-box svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+.search-box input:focus,
+.search-box input:focus-visible,
+.search-box input:active {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-box input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.meta-tag {
+  font-size: 0.72rem;
+  text-align: left;
+  padding-left: 2px;
+}
+    /* Main Hub Layout (Nav Sticky Tabs + Content Area) */
+    .hub-layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: clamp(24px, 4vw, 56px);
+      padding-bottom: clamp(64px, 8vw, 120px);
+      align-items: start;
+    }
+
+    /* Left Sidebar Navigation */
+    .hub-nav-wrap {
+      position: sticky;
+      top: calc(var(--header-h) + 20px);
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .hub-nav-title {
+      font: 600 .75rem/1 var(--font-mono);
+      color: var(--ink-3);
+      padding: 10px 12px 14px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 8px;
+    }
+
+    .hub-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hub-nav-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font: 600 .92rem/1.3 var(--font-ui);
+      color: var(--ink-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: background-color .25s, color .25s;
+    }
+
+    .hub-nav-btn:hover {
+      color: var(--ink);
+      background: var(--surface-2);
+    }
+
+    .hub-nav-btn.is-active {
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .hub-nav-btn .pill {
+      font: 400 .7rem/1 var(--font-mono);
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.1);
+    }
+    .hub-nav-btn.is-active .pill {
+      background: rgba(0,0,0,0.25);
+      color: var(--on-accent);
+    }
+
+    /* Content Panels */
+    .hub-content-stage {
+      min-width: 0;
+    }
+
+    .hub-panel {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 44px);
+      box-shadow: var(--shadow);
+      animation: fadeIn .35s var(--ease) forwards;
+    }
+
+    .hub-panel.is-active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel-header {
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-title {
+      font: 700 clamp(1.8rem, 3vw, 2.5rem)/1.15 var(--font-display);
+      letter-spacing: -.03em;
+      margin-bottom: 8px;
+    }
+
+    .panel-meta {
+      font: 400 .82rem/1 var(--font-mono);
+      color: var(--ink-3);
+    }
+
+    /* Structured Document Sections */
+    .doc-section {
+      margin-bottom: 32px;
+    }
+
+    .doc-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .doc-h2 {
+      font: 600 1.25rem/1.3 var(--font-display);
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-h2::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      border-radius: 2px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .doc-p {
+      color: var(--ink-2);
+      font-size: .98rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .doc-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+
+    .doc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .95rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    .doc-list li svg {
+      flex-shrink: 0;
+      color: var(--accent);
+      margin-top: 3px;
+    }
+
+    .callout-box {
+      padding: 18px 22px;
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--accent) 8%, var(--surface-2));
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
+      color: var(--ink);
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-block: 20px;
+    }
+
+    .callout-box strong {
+      color: var(--accent-text);
+    }
+
+    /* About & Stats Panel Specials */
+    .studio-summary-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
+      background: var(--surface-2);
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      margin-bottom: 32px;
+    }
+
+    .hub-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-block: 28px;
+    }
+
+    .stat-pill {
+      background: var(--bg);
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color .3s, transform .3s;
+    }
+    .stat-pill:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .stat-pill .num {
+      font: 700 1.6rem/1 var(--font-display);
+      color: var(--ink);
+    }
+    .stat-pill .lbl {
+      font: 500 .75rem/1.2 var(--font-mono);
+      color: var(--ink-3);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+/* Social Media Section */
+.social-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.social-section-title {
+  font: 600 .75rem/1 var(--font-mono);
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  color: var(--ink);
+  font: 600 .9rem/1 var(--font-ui);
+  transition: border-color .3s var(--ease), transform .3s var(--ease), background-color .3s;
+}
+
+.social-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.social-card svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.social-card .social-handle {
+  font: 400 .72rem/1 var(--font-mono);
+  color: var(--ink-3);
+  margin-left: auto;
+        }
+    /* Contact Form Inside Panel */
+    .hub-form {
+      display: grid;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font: 600 .85rem/1 var(--font-ui);
+      color: var(--ink);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--ink);
+      font-size: .95rem;
+      transition: border-color .3s, box-shadow .3s;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .form-alert {
+      display: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--ink);
+      font-size: .9rem;
+    }
+
+    /* Bottom Footer of Page */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding-block: 40px;
+      color: var(--ink-3);
+      font-size: .88rem;
+    }
+
+    .footer-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links button {
+      color: var(--ink-2);
+      font-size: .85rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-links button:hover {
+      color: var(--accent-text);
+    }
+
+    /* Mobile Hub Bar */
+    .mobile-tab-scroller {
+      display: none;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .mobile-tab-scroller::-webkit-scrollbar { display: none; }
+
+    .mob-tab-btn {
+      white-space: nowrap;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      color: var(--ink-2);
+      font-size: .85rem;
+      font-weight: 500;
+    }
+    .mob-tab-btn.is-active {
+      background: var(--accent);
+      color: var(--on-accent);
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 900px) {
+      .hub-layout {
+        grid-template-columns: 100%;
+      }
+      .hub-nav-wrap {
+        display: none;
+      }
+      .mobile-tab-scroller {
+        display: flex;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .hub-stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+@media (max-width: 480px) {
+  :root {
+    --gutter: 14px;
+    --header-h: 62px;
+  }
+
+  .hub-stats-grid {
+    gap: 10px;
+  }
+
+  .stat-pill {
+    padding: 14px;
+  }
+
+  .mob-tab-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+}
+    @media (max-width: 640px) {
+      .dev-banner {
+  font-size: 0.7rem;
+  padding: 8px 12px;
+  width: 100%;
+      }
+      .search-box input {
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-clip: padding-box;
+      }
+      .search-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        max-width: 100%;
+      }
+      .footer-flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .hub-hero {
+  padding-top: calc(var(--header-h) + 24px);
+  padding-bottom: 24px;
+}
+
+.hub-title {
+  font-size: clamp(1.8rem, 8vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.hub-subtitle {
+  font-size: 0.95rem;
+}
+
+.hub-badge {
+  font-size: 0.68rem;
+  padding: 5px 11px;
+}
+.dev-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  color: var(--accent-text);
+  font: 600 0.8rem/1.4 var(--font-mono);
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.dev-banner .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: devPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes devPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
+}
+.hub-panel {
+  padding: 20px 16px;
+  border-radius: 16px;
+}
+
+.panel-title {
+  font-size: 1.5rem;
+}
+
+.panel-meta {
+  font-size: 0.72rem;
+}
+
+.doc-h2 {
+  font-size: 1.05rem;
+}
+
+.doc-p,
+.doc-list li {
+  font-size: 0.9rem;
+}
+
+.callout-box {
+  padding: 14px 16px;
+  font-size: 0.88rem;
+}
+
+.studio-summary-card {
+  grid-template-columns: 1fr;
+  text-align: center;
+  padding: 18px;
+}
+
+.studio-summary-card > div:first-child {
+  display: flex;
+  justify-content: center;
+}
+
+.stat-pill .num {
+  font-size: 1.3rem;
+}
+
+.header-actions .btn span {
+  display: none;
+}
+
+.header-actions .btn {
+  padding: 0 14px;
+}
+
+.logo {
+  font-size: 1.15rem;
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+}
+
+.hub-form button[type="submit"] {
+  width: 100%;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-size: 16px; /* Prevents iOS zoom-on-focus */
+}
+
+.site-footer {
+  padding-block: 28px;
+  text-align: center;
+}
+
+.footer-links {
+  justify-content: center;
+  gap: 14px;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ SITE HEADER ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="product.html" aria-label="Ember Home">
+        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle class="lm-core" cx="16" cy="16" r="6"/>
+          <circle class="lm-dot" cx="29" cy="16" r="2.4"/>
+        </svg>
+        <span>Ember</span>
+      </a>
+
+      <div class="header-actions">
+        <!-- Theme Switcher -->
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle light or dark theme">
+          <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+
+        <a class="btn btn-outline" href="product.html">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Store</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO & SEARCH ============ -->
+  <main>
+    <section class="hub-hero">
+      <div class="container">
+        <div class="dev-banner">
+  <span class="dot"></span>
+  <span>Website is currently in development — some sections may change.</span>
+        </div>
+        <span class="hub-badge">Official Hub • All-in-One Documentation</span>
+        <h1 class="hub-title">Policies, Terms & Studio Info</h1>
+        <p class="hub-subtitle">
+          Everything regarding our digital asset delivery, licensing, data safety, returns, and how our creative studio operates.
+        </p>
+
+        <div class="search-row">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="quick-filter-input" placeholder="Search policies (e.g. refund, license, cookies)..." autocomplete="off">
+          </div>
+          <div class="meta-tag">Last Verified Revision: <strong>14 Oct 2026</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MAIN CONTENT + TABS ============ -->
+    <div class="container">
+
+      <!-- Horizontal Mobile Tabs -->
+      <div class="mobile-tab-scroller" id="mobile-tabs" role="tablist">
+        <button class="mob-tab-btn is-active" data-target="privacy">Privacy</button>
+        <button class="mob-tab-btn" data-target="refund">Refunds & Returns</button>
+        <button class="mob-tab-btn" data-target="terms">Terms of Service</button>
+        
+        <button class="mob-tab-btn" data-target="support">Support</button>
+      </div>
+
+      <div class="hub-layout">
+
+        <!-- Desktop Sticky Navigation -->
+        <aside class="hub-nav-wrap">
+          <div class="hub-nav-title">Select Document</div>
+          <nav class="hub-nav-list" role="tablist">
+            <button class="hub-nav-btn is-active" data-target="privacy" role="tab">
+              <span>Privacy Policy</span>
+              <span class="pill">GDPR</span>
+            </button>
+            <button class="hub-nav-btn" data-target="refund" role="tab">
+              <span>Return & Refund</span>
+              <span class="pill">Instant</span>
+            </button>
+            <button class="hub-nav-btn" data-target="terms" role="tab">
+              <span>Terms of Service</span>
+              <span class="pill">Legal</span>
+            </button>
+            
+            <button class="hub-nav-btn" data-target="support" role="tab">
+              <span>Contact & Help</span>
+              <span class="pill">24/7</span>
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Right Side Document Stages -->
+        <div class="hub-content-stage" id="document-stage">
+
+          <!-- 1. PRIVACY POLICY PANEL -->
+          <article class="hub-panel is-active" id="panel-privacy" data-category="privacy">
+            <header class="panel-header">
+              <h2 class="panel-title">Privacy Policy</h2>
+              <div class="panel-meta">Effective Date: October 2026 • Document Ref: EMB-PRV-2026</div>
+            </header>
+
+            <div class="doc-section">
+              <h3 class="doc-h2">1. Data We Collect</h3>
+              <p class="doc-p">
+                At Ember, we value transparency and privacy. When you purchase products like the <em>Youtube Creator Vault</em> or interact with our web applications, we only gather basic information required to process and guarantee your access:
+              </p>
+              <ul class="doc-list">
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Transactional Contact:</strong> Your primary email address to send your instant download links and invoices.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Device & Telemetry:</strong> Anonymized browser type, screen resolution, and theme preference (`light` or `dark`) stored locally in your browser storage.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Payment Security:</strong> We do NOT collect or store your credit/debit card numbers or UPI PINs. All payments are encrypted by certified payment processors.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="doc-section">
+              <h3 class="doc-h2">2. How Your Information is Used</h3>
+              <p class="doc-p">
+                Your data is strictly utilized for:
+              </p>
+              <ul class="doc-list">
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Delivering instant downloadable files and license certificates.</span></li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Providing product updates and updated resource files directly to your inbox.</span></li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>We do not sell, rent, or trade your personal data to any third-party marketing companies.</span></li>
+              </ul>
+            </div>
+
+            <div class="callout-box">
+              <strong>Your Rights:</strong> You can request complete deletion of your customer logs or opt out of release notifications anytime by emailing our support desk.
+            </div>
+          </article>
+
+          <!-- 2. REFUND & RETURN POLICY PANEL -->
+          <article class="hub-panel" id="panel-refund" data-category="refund">
+            <header class="panel-header">
+              <h2 class="panel-title">Return & Refund Policy</h2>
+              <div class="panel-meta">Digital Products & Immediate Access Terms</div>
+            </header>
+
+            <div class="doc-section">
+              <h3 class="doc-h2">1. Nature of Instant Digital Downloads</h3>
+              <p class="doc-p">
+                Due to the immediate digital delivery of items such as the <strong>Youtube Creator Vault</strong> (which includes raw editing assets, templates, video plans, and direct cloud links), purchases are generally non-tangible and irrevocable once links are generated.
+              </p>
+            </div>
+
+            <div class="doc-section">
+              <h3 class="doc-h2">2. Qualifying Refund Conditions</h3>
+              <p class="doc-p">
+                We believe in 100% fair satisfaction. You are entitled to a full refund or replacement under the following scenarios:
+              </p>
+              <ul class="doc-list">
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Accidental Duplicate Orders:</strong> If your card or UPI was charged multiple times for the identical item, we will issue a direct refund for the redundant transaction within 24-48 hours.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Corrupt or Inaccessible Files:</strong> If the provided files cannot be downloaded or opened and our technical team cannot resolve it within 48 hours.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="callout-box">
+              <strong>How to request:</strong> Send your payment receipt or Order ID along with your registered email to <em>support@ember-studio.com</em> or submit the quick contact ticket below.
+            </div>
+          </article>
+
+          <!-- 3. TERMS OF SERVICE PANEL -->
+          <article class="hub-panel" id="panel-terms" data-category="terms">
+            <header class="panel-header">
+              <h2 class="panel-title">Terms of Service</h2>
+              <div class="panel-meta">Standard End-User License Agreement (EULA)</div>
+            </header>
+
+            <div class="doc-section">
+              <h3 class="doc-h2">1. Commercial License Scope</h3>
+              <p class="doc-p">
+                When you buy an Ember resource pack, you receive a lifetime, non-exclusive, worldwide license to use the templates, scripts, presets, and audio elements in:
+              </p>
+              <ul class="doc-list">
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Unlimited personal and client projects (YouTube, Instagram, Podcasts, TikTok).</span></li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Monetized social media videos without copyright claims.</span></li>
+              </ul>
+            </div>
+
+            <div class="doc-section">
+              <h3 class="doc-h2">2. Prohibited Usage & Anti-Piracy</h3>
+              <p class="doc-p">
+                You may <strong>NOT</strong> repackage, re-sell, distribute for free on Telegram/Google Drive channels, or claim individual Ember raw preset assets as your own standalone stock template.
+              </p>
+            </div>
+
+            <div class="doc-section">
+              <h3 class="doc-h2">3. Updates & Future Iterations</h3>
+              <p class="doc-p">
+                License owners receive all minor version improvements without additional subscription fees.
+              </p>
+            </div>
+          </article>
+
+          
+            
+
+          <!-- 5. CONTACT & SUPPORT PANEL -->
+          <article class="hub-panel" id="panel-support" data-category="support">
+            <header class="panel-header">
+              <h2 class="panel-title">Direct Support & Ticket Desk</h2>
+              <div class="panel-meta">Average Response Time: Under 3 Hours</div>
+            </header>
+
+            <p class="doc-p">
+              Need help extracting your archive, got a payment inquiry, or need a custom commercial invoice? Fill out the form below:
+            </p>
+
+            <div class="form-alert" id="form-success-banner">
+              ✓ <strong>Ticket submitted successfully!</strong> Our studio team will get back to you at your provided email address shortly.
+            </div>
+
+            <form class="hub-form" id="support-ticket-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-name">Your Full Name</label>
+                  <input type="text" id="f-name" required placeholder="e.g. Sameer Khan">
+                </div>
+                <div class="form-group">
+                  <label for="f-email">Email Address (Used during purchase)</label>
+                  <input type="email" id="f-email" required placeholder="you@example.com">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-topic">Inquiry Category</label>
+                  <select id="f-topic">
+                    <option value="access">Download Link or Access Issue</option>
+                    <option value="billing">Payment & Billing Query</option>
+                    <option value="license">Commercial Licensing Verification</option>
+                    <option value="feedback">Product Feedback & Suggestions</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="f-order">Order ID (Optional)</label>
+                  <input type="text" id="f-order" placeholder="e.g. EMB-78923">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="f-msg">Your Message / Query Details</label>
+                <textarea id="f-msg" required placeholder="Describe what you need assistance with..."></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit" style="height: 50px; font-size: 1rem;">
+                <span>Submit Ticket</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
+            </form>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <p>&copy; <span id="year">2026</span> Ember Design Studio. All rights reserved.</p>
+      
+      <div class="footer-links">
+        <button type="button" class="foot-btn" data-target="privacy">Privacy</button>
+        <button type="button" class="foot-btn" data-target="refund">Refunds</button>
+        <button type="button" class="foot-btn" data-target="terms">Terms</button>
+        
+      <button type="button" class="foot-btn" data-target="support">Support</button>
+        <div class="social-section">
+  <div class="social-section-title">Connect with Ember</div>
+  <div class="social-grid">
+
+    <!-- Instagram -->
+    <a class="social-card" href="https://instagram.com/emberstudio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <span>Instagram</span>
+      <span class="social-handle">@emberstudio</span>
+    </a>
+
+    <!-- YouTube -->
+    <a class="social-card" href="https://youtube.com/@emberstudio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+      <span>YouTube</span>
+      <span class="social-handle">@emberstudio</span>
+    </a>
+
+    <!-- X / Twitter -->
+    <a class="social-card" href="https://x.com/emberstudio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <span>X / Twitter</span>
+      <span class="social-handle">@emberstudio</span>
+    </a>
+
+    <!-- Telegram -->
+    <a class="social-card" href="https://t.me/emberstudio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      <span>Telegram</span>
+      <span class="social-handle">@emberstudio</span>
+    </a>
+
+    <!-- Discord -->
+    <a class="social-card" href="https://discord.gg/emberstudio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      <span>Discord</span>
+      <span class="social-handle">/emberstudio</span>
+    </a>
+
+    <!-- WhatsApp Business -->
+    <a class="social-card" href="https://wa.me/919999999999" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      <span>WhatsApp</span>
+      <span class="social-handle">Chat Now</span>
+    </a>
+
+    <!-- Email / Newsletter -->
+    <a class="social-card" href="mailto:support@ember-studio.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+      <span>Email Us</span>
+      <span class="social-handle">support@</span>
+    </a>
+
+    <!-- Website / Store -->
+    <a class="social-card" href="product.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span>Store</span>
+      <span class="social-handle">Visit</span>
+    </a>
+
+  </div>
+        </div>
+        <a href="product.html" style="color:var(--accent-text);">Return to Store →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ INTERACTION SCRIPT ============ -->
+  <script>
+    (function () {
+      'use strict';
+
+      var root = document.documentElement;
+
+      // 1. Theme Toggle
+      var themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+          var isDark = root.getAttribute('data-theme') !== 'light';
+          var next = isDark ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try { localStorage.setItem('ember-theme', next); } catch (e) {}
+        });
+      }
+
+      // 2. Tab Navigation Logic
+      var navButtons = document.querySelectorAll('.hub-nav-btn');
+      var mobButtons = document.querySelectorAll('.mob-tab-btn');
+      var panels = document.querySelectorAll('.hub-panel');
+      var footButtons = document.querySelectorAll('.foot-btn');
+
+      function switchTab(targetId) {
+        // Update Desktop Nav
+        navButtons.forEach(function (btn) {
+          btn.classList.toggle('is-active', btn.getAttribute('data-target') === targetId);
+        });
+
+        // Update Mobile Nav
+        mobButtons.forEach(function (btn) {
+          btn.classList.toggle('is-active', btn.getAttribute('data-target') === targetId);
+        });
+
+        // Show matching Panel (clear any inline display set by search)
+panels.forEach(function (panel) {
+  var active = panel.id === 'panel-' + targetId;
+  panel.classList.toggle('is-active', active);
+  if (active) panel.style.display = '';
+});
+
+        // Scroll to stage nicely on smaller screens
+        if (window.innerWidth <= 900) {
+  var stage = document.getElementById('document-stage');
+  if (stage) {
+    var isSearching = searchInput && searchInput.value.trim().length > 0;
+    var offset = isSearching ? 120 : 80;
+    window.scrollTo({
+      top: stage.offsetTop - offset,
+      behavior: 'smooth'
+    });
+  }
+}
+      }
+
+      navButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          switchTab(btn.getAttribute('data-target'));
+        });
+      });
+
+      mobButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          switchTab(btn.getAttribute('data-target'));
+        });
+      });
+
+      footButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          switchTab(btn.getAttribute('data-target'));
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+
+      // 3. Quick Keyword Search / Filter (works across ALL panels)
+var searchInput = document.getElementById('quick-filter-input');
+if (searchInput) {
+  searchInput.addEventListener('input', function (e) {
+    var q = e.target.value.toLowerCase().trim();
+    var panels = document.querySelectorAll('.hub-panel');
+
+    // Reset everything when query is empty
+    if (!q) {
+      panels.forEach(function (panel) {
+        panel.style.display = '';
+        panel.querySelectorAll('.doc-section').forEach(function (sec) {
+          sec.style.display = '';
+        });
+      });
+      switchTab('privacy');
+      return;
+    }
+
+    var firstMatchPanelId = null;
+
+    panels.forEach(function (panel) {
+      var sections = panel.querySelectorAll('.doc-section');
+      var panelHasMatch = false;
+
+      sections.forEach(function (sec) {
+        var text = sec.innerText.toLowerCase();
+        var match = text.indexOf(q) !== -1;
+        sec.style.display = match ? '' : 'none';
+        if (match) panelHasMatch = true;
+      });
+
+      // Also check panel title/header text
+      var headerText = (panel.querySelector('.panel-title') || {}).innerText || '';
+      if (headerText.toLowerCase().indexOf(q) !== -1) {
+        panelHasMatch = true;
+      }
+
+      panel.style.display = panelHasMatch ? '' : 'none';
+
+      if (panelHasMatch && !firstMatchPanelId) {
+        firstMatchPanelId = panel.id.replace('panel-', '');
+      }
+    });
+
+    // Auto-switch to first matching panel
+    if (firstMatchPanelId) {
+      switchTab(firstMatchPanelId);
+    }
+  });
+
+  // Clear search on Escape key (nice UX)
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.blur();
+    }
+  });
+}
+
+      // 4. Form Submit simulation
+      var form = document.getElementById('support-ticket-form');
+      var successAlert = document.getElementById('form-success-banner');
+      if (form && successAlert) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          form.reset();
+          successAlert.style.display = 'block';
+          successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+
+      // 5. Dynamic Year
+      var yr = document.getElementById('year');
+      if (yr) yr.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
